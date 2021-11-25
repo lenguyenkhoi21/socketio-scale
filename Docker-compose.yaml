@@ -3,52 +3,65 @@ services:
   redis-pub-sub:
     container_name: redis-pub-sub
     image: redis
-    ports:
-      - "6379:6379"
   server-01:
     container_name: server-01
-    image: lenguyenkhoi21/socket-io:1.5
+    image: lenguyenkhoi21/server-socket.io:lasted
+    ports:
+      - "3001:3001"
     environment:
       - SERVER_NAME=server-instance-01
       - PORT=3001
       - HOST_REDIS=redis-pub-sub
       - PORT_REDIS=6379
-    ports:
-      - "3001:3001"
     depends_on:
       - redis-pub-sub
   server-02:
     container_name: server-02
-    image: lenguyenkhoi21/socket-io:1.5
+    image: lenguyenkhoi21/server-socket.io:lasted
+    ports:
+      - "3002:3002"
     environment:
       - SERVER_NAME=server-instance-02
       - PORT=3002
       - HOST_REDIS=redis-pub-sub
       - PORT_REDIS=6379
-    ports:
-      - "3002:3002"
     depends_on:
       - redis-pub-sub
   server-03:
     container_name: server-03
-    image: lenguyenkhoi21/socket-io:1.5
+    image: lenguyenkhoi21/server-socket.io:lasted
+    ports:
+      - "3003:3003"
     environment:
       - SERVER_NAME=server-instance-03
       - PORT=3003
       - HOST_REDIS=redis-pub-sub
       - PORT_REDIS=6379
-    ports:
-      - "3003:3003"
     depends_on:
       - redis-pub-sub
-  reversed-proxy:
-    container_name: reversed-proxy
-    image: nginx
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-    ports:
-      - "80:80"
-    depends_on:
-      - server-01
-      - server-02
-      - server-03
+#  reversed-proxy:
+#    container_name: reversed-proxy
+#    image: nginx
+#    volumes:
+#      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+#    ports:
+#      - "80:80"
+#    depends_on:
+#      - server-01
+#      - server-02
+#      - server-03
+#  reversed-proxy:
+#    container_name: reversed-proxy
+#    image: haproxy
+#    volumes:
+#      - ./haproxy:/usr/local/etc/haproxy
+#    links:
+#      - server-01
+#      - server-02
+#      - server-03
+#    ports:
+#      - "3000:80"
+#    depends_on:
+#      - server-01
+#      - server-02
+#      - server-03

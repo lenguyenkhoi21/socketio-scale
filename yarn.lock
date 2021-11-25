@@ -12,6 +12,15 @@
     socket.io-adapter "~2.3.0"
     uid2 "0.0.3"
 
+"@socket.io/redis-emitter@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@socket.io/redis-emitter/-/redis-emitter-4.1.0.tgz#f18325e2fae6d0ca354b9c1272c902e988285eb8"
+  integrity sha512-zZkoVfWY3zlbGk8sXFBqQy7CdH/Zg9cPq1EYuIdpVFybEWKfFxyguqsInMZCvjwotAsaICnIO2d9s8/DmY2DAw==
+  dependencies:
+    debug "~4.3.1"
+    notepack.io "~2.1.0"
+    socket.io-parser "~4.0.4"
+
 "@types/component-emitter@^1.2.10":
   version "1.2.11"
   resolved "https://registry.yarnpkg.com/@types/component-emitter/-/component-emitter-1.2.11.tgz#50d47d42b347253817a39709fef03ce66a108506"
@@ -342,6 +351,11 @@ negotiator@0.6.2:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.2.tgz#feacf7ccf525a77ae9634436a64883ffeca346fb"
   integrity sha512-hZXc7K2e+PgeI1eDBe/10Ard4ekbfrrqG8Ep+8Jmf4JID2bNg7NvCPOZN+kfF574pFQI7mum2AUqDidoKqcTOw==
+
+notepack.io@~2.1.0:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/notepack.io/-/notepack.io-2.1.3.tgz#cc904045c751b1a27b2dcfd838d81d0bf3ced923"
+  integrity sha512-AgSt+cP5XMooho1Ppn8NB3FFaVWefV+qZoZncYTUSch2GAEwlYLcIIbT5YVkMlFeNHnfwOvc4HDlbvrB5BRxXA==
 
 notepack.io@~2.2.0:
   version "2.2.0"
