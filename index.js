@@ -3,8 +3,8 @@ const { createServer } = require("http")
 const { Server } = require("socket.io")
 const { createClient } = require('redis')
 const { createAdapter } = require("@socket.io/redis-adapter")
-const { Emitter } = require("@socket.io/redis-emitter")
-const {request} = require('express')
+//const { Emitter } = require("@socket.io/redis-emitter")
+
 
 const SERVER_NAME = process.env.SERVER_NAME || 'Unknown'
 const PORT = process.env.PORT || 3000
