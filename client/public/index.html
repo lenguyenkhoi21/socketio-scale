@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title>Title</title>
+  <script src='https://cdn.socket.io/4.4.0/socket.io.min.js' integrity='sha384-1fOn6VtTq3PWwfsOrk45LnYcGosJwzMHv+Xh/Jx5303FVOXzEnw0EpLv30mtjmlj' crossorigin='anonymous'></script>
+</head>
+<body>
+
+<br />
+
+<form onsubmit='return false'>
+  <label>
+    Message: <input name='message' id='message' /> <br/>
+  </label>
+
+  <label>
+    Name: <input name='receiver' id='receiver' /> <br/>
+  </label>
+
+  <button type='submit' onclick='sendMessage()' > Send Message </button>
+</form>
+
+<script>
+  function generateRandomInteger(min, max) {
+    return Math.floor(min + Math.random()*(max + 1 - min))
+  }
+
+  const users = ['khoi', 'milu', 'invoker', 'jinx', 'leesin']
+
+  const username = users[generateRandomInteger(0, 4)]
+
+  document.title = username
+
+
+  const socket = io('http://192.168.1.4:80', {
+    withCredentials: true,
+    extraHeaders: {
+      'username': username
+    }
+  })
+
+  socket.on('connect', () => {
+    console.log(socket.id)
+  })
+
+  socket.on('receiver-message', msg => {
+    console.log(msg)
+  })
+
+  const sendMessage = () => {
+    const message = {
+      receiver : document.getElementById('receiver').value,
+      message : document.getElementById('message').value
+    }
+
+    socket.emit('private-message', message)
+  }
+
+  socket.on('disconnect', () => {
+    console.log(socket.id)
+  })
+</script>
+</body>
+</html>
